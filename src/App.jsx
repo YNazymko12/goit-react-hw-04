@@ -52,10 +52,6 @@ const App = () => {
   }, [searchValue, page]);
 
   const handleSearch = query => {
-    if (query.trim() === '') {
-      toast.error('Please enter a search query');
-      return;
-    }
     if (query === searchValue) {
       setPage(1);
     } else {

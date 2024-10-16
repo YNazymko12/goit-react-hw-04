@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import css from './SearchBar.module.css';
+import toast from 'react-hot-toast';
 
 const SearchBar = ({ onSearch }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -10,6 +11,10 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (searchValue.trim() === '') {
+      toast.error('Please enter a search query');
+      return;
+    }
     onSearch(searchValue);
     setSearchValue('');
   };
